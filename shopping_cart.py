@@ -2,10 +2,10 @@ import numpy as np
 
 class ShoppingCart:
     # write your code here
-    def __init__(self, employee_discount=None):
+    def __init__(self, discount=None):
         self._total = 0
         self._items = []
-        self._employee_discount = employee_discount
+        self._discount = discount
 
     @property
     def total(self):
@@ -26,17 +26,17 @@ class ShoppingCart:
         return self._items
 
     @property
-    def employee_discount(self):
-        return self._employee_discount
+    def discount(self):
+        return self._discount
 
-    @employee_discount.setter
-    def employee_discount(self, value):
-        self._employee_discount = value
-        return self._employee_discount
+    @discount.setter
+    def discount(self, value):
+        self._discount = value
+        return self._discount
 
-    def add_item(self, name, price, q=1):
+    def add_item(self, name, price, quantity=1):
         self._items.append({"name": name, "price": price})
-        self._total = price * q
+        self._total = price * quantity
         return self._total
 
     def get_all_prices(self):
@@ -49,9 +49,9 @@ class ShoppingCart:
         return np.median(self.get_all_prices())
 
     def apply_discount(self):
-        if self._employee_discount:
-            discount = self._employee_discount/100
-            new_price = self._total * ( 1 - discount)
+        if self._discount:
+            d = self._discount/100
+            new_price = self._total * ( 1 - d)
             return new_price
         else:
             return "Sorry, there is no discount to apply to your cart :("

@@ -16,6 +16,10 @@ class ShoppingCart:
         self._total = value
         return self._total
 
+    @total.deleter
+    def total(self):
+        del self._total
+
     @property
     def items(self):
         return self._items
@@ -25,12 +29,16 @@ class ShoppingCart:
         self._items = items
         return self._items
 
+    @items.deleter
+    def items(self):
+        del self._items
+
     @property
-    def discount(self):
+    def employee_discount(self):
         return self._discount
 
-    @discount.setter
-    def discount(self, value):
+    @employee_discount.setter
+    def employee_discount(self, value):
         self._discount = value
         return self._discount
 
